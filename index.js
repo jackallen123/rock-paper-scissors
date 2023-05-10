@@ -25,11 +25,31 @@ function getComputerChoice() {
     Returns a str that declares winner of the round
 */
 function playGame(playerSelection, computerSelection) {
+    // make parameters case-insensitive
+    let a = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
+    // draw cases
+    if (a == computerSelection) {
+        return 'The game is a draw!';
+    }
+
+    // win cases
+    else if ((a == 'Rock' && computerSelection == 'Scissors') ||
+            (a == 'Scissors' && computerSelection == 'Paper') ||
+            (a == 'Paper' && computerSelection == 'Rock')) {
+                return ('You win! ' + a + ' beats ' + computerSelection + '.');
+    }
+    
+    // if it isn't a draw and you don't win, you must lose
+    else {
+        return ('You lose! ' + computerSelection + ' beats ' + a + '.');
+    }
 }
 
-/*
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
+// get user input
+let playerSelection = prompt("Enter Rock, Paper or Scissors: \n");
+// generate computer choice
+let computerSelection = getComputerChoice();
+
+// print results
 console.log(playGame(playerSelection, computerSelection))
-*/
