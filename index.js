@@ -60,6 +60,8 @@ function game() {
     for (let i = 0; i < 5; i++) {
         // get input from user
         let playerSelection = prompt("Enter rock, paper, or scissors to play the game: \n");
+        // makes input case-insensitive
+        let a = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
         // generate computer's play
         let computerSelection = getComputerChoice();
@@ -78,7 +80,7 @@ function game() {
         // if user wins the round
         else if (result == 'Win') {
             // print result to console
-            console.log("You win this round!" + playerSelection + " beats " + computerSelection + ".")
+            console.log("You win this round! " + a + " beats " + computerSelection + ".")
             // icrement wins counter
             wins++;
         }
@@ -86,7 +88,7 @@ function game() {
         // if user loses the round
         else {
             // print result to console
-            console.log("You lose this round! " + computerSelection + " beats " + playerSelection + ".")
+            console.log("You lose this round! " + computerSelection + " beats " + a + ".")
             // increment losses counter
             losses++;
         }
@@ -95,3 +97,5 @@ function game() {
         console.log("(W/L/D) Current score is: " + wins + " - " + losses + " - " + draws)
     }
 }
+
+game();
